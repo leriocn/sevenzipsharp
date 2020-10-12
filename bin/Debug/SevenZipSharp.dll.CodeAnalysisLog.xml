@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2019\community\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="16.0">
+ <Targets>
+  <Target Name="K:\安装包\sevenzipsharp\sourceCode\sourceCode\SevenZip\bin\Debug\SevenZipSharp.dll">
+   <Modules>
+    <Module Name="sevenzipsharp.dll">
+     <Namespaces>
+      <Namespace Name="SevenZip">
+       <Types>
+        <Type Name="SevenZipExtractor" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2020-10-10 03:37:57Z" FixCategory="Breaking">
+             <Issue Name="NoAllowedExceptions" Certainty="90" Level="Error" Path="K:\安装包\sevenzipsharp\sourceCode\sourceCode\SevenZip" File="SevenZipExtractor.cs" Line="800">'SevenZipExtractor.Dispose()' 创建 'InvalidOperationException' 类型的异常，该异常类型不应当在这种类型的方法中引发。如果有可能会引发此异常实例，请更改该方法的逻辑，使它不再引发异常。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="SevenZip.Sdk.Compression.RangeCoder">
+       <Types>
+        <Type Name="BitEncoder" Kind="Struct" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#.cctor()" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="InitializeValueTypeStaticFieldsInline" Category="Microsoft.Usage" CheckId="CA2207" Status="Active" Created="2020-10-10 03:37:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="K:\安装包\sevenzipsharp\sourceCode\sourceCode\SevenZip\sdk\Compress\RangeCoder" File="RangeCoderBit.cs" Line="33">声明 'BitEncoder' 中的静态字段时应初始化所有这些字段，并移除显式静态构造函数。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065">
+   <Name>不要在意外的位置引发异常</Name>
+   <Description>不要从意外的位置显式引发异常。用户不希望某些方法(如 Equals 和 GetHashCode)引发异常。因此，对这些方法的调用通常不包装在 try catch 块中。</Description>
+   <Resolution Name="NoAllowedExceptions">{0} 创建 {1} 类型的异常，该异常类型不应当在这种类型的方法中引发。如果有可能会引发此异常实例，请更改该方法的逻辑，使它不再引发异常。</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb386039.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Error, Warning</MessageLevel>
+   <File Name="designrules.dll" Version="16.0.0.0" />
+  </Rule>
+  <Rule TypeName="InitializeValueTypeStaticFieldsInline" Category="Microsoft.Usage" CheckId="CA2207">
+   <Name>以内联方式初始化值类型的静态字段</Name>
+   <Description>不要在值类型上声明显式静态构造函数。在显式静态构造函数中初始化静态数据将导致在元数据中未标记为“beforefieldinit”的值类型。在这种情况下，不能始终保证在调用该值类型上的实例成员前，调用该静态构造函数。</Description>
+   <Resolution Name="Default">声明 {0} 中的静态字段时应初始化所有这些字段，并移除显式静态构造函数。</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182346.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="usagerules.dll" Version="16.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">类别</String>
+  <String Key="Certainty">确定性</String>
+  <String Key="CollapseAll">全部折叠</String>
+  <String Key="CheckId">检查 ID</String>
+  <String Key="Error">错误</String>
+  <String Key="Errors">错误</String>
+  <String Key="ExpandAll">全部展开</String>
+  <String Key="Help">帮助</String>
+  <String Key="Line">行</String>
+  <String Key="Messages">消息</String>
+  <String Key="LocationNotStoredInPdb">[位置未存储在 Pdb 中]</String>
+  <String Key="Project">项目</String>
+  <String Key="Resolution">解析</String>
+  <String Key="Rule">规则</String>
+  <String Key="RuleFile">规则文件</String>
+  <String Key="RuleDescription">规则说明</String>
+  <String Key="Source">源</String>
+  <String Key="Status">状态</String>
+  <String Key="Target">目标</String>
+  <String Key="Warning">警告</String>
+  <String Key="Warnings">警告</String>
+  <String Key="ReportTitle">代码分析报告</String>
+ </Localized>
+</FxCopReport>
